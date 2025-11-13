@@ -11,7 +11,7 @@ body{
 
 a{
 	text-decoration: none;
-	color: white;
+	color: black;
 }
 /* header */
 .logo{
@@ -27,10 +27,11 @@ a{
 }
 /* navbar */
 .nav button{
-	padding: 3px 10px;
+	padding: 5px 20px;
 	background-color: #BBDEFB;
-	border-radius: 20px;
+	border-radius: 10px;
 	font-size: 15px;
+	border: none;
 }
 .nav button:hover{
 	background-color: yellow;
@@ -76,4 +77,84 @@ footer h3{
 }
 footer p,footer li{
 	font-size: 0.8rem;
+}
+
+/* header */
+/* === Dashboard container === */
+.dashboard {
+  min-height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.612), rgba(0, 0, 0, 0.5)),
+              url('../img/sekolah.jpg') center/cover no-repeat; /* sesuaikan nama file */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  /* margin: 40px; */
+  /* border-radius: 10px; */
+}
+.dashboard h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+.dashboard .isi {
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.dashboard button {
+  background: #BBDEFB;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin: 20px;
+}
+.dashboard p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #f1f1f1;
+  text-align: justify;
+}
+.dashboard button a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 2rem;
+}
+/* .dashboard.isi{
+	display: flex;
+	flex-direction: row;
+}
+.dashboard button{
+	padding: 10px;
+	font-size: large;
+	border-radius: 10px;
+	background-color: #BBDEFB;
+} */
+
+.dashboard1{
+	background-color: #fff;
+	padding: 40px 20px;
+	/* text-align: center; */
+	margin: 0 auto;
+	text-align: center;
+	/* display: flex; */
+	/* align-items: center; */
+	/* align-content: center; */
+}
+.dashboard1 p{
+	font-size: 25px;
+	font-weight: bold;
+}
+.dashboard1 ul li{
+	font-size: 20px;
 }
