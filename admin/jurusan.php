@@ -6,11 +6,7 @@
         $jurusan=$stmnt->fetchAll();
     // }
     
-    if(isset($_GET["edit"])){
-        $stmnt=$pdo->prepare("INSERT INTO jenjang (NAMA_JENJANG) VALUES (:NAMA_JENJANG)");
-        $stmnt->bindValue(':NAMA_JENJANG',$data['jenjang']);
-        $stmnt->execute();
-    }
+
     require_once '../includes/header.php';
     require_once '../includes/navbarAdmin.php';
 ?>
@@ -33,5 +29,5 @@
         </tr>
         <?php endforeach; ?>
     </table>
-    <button>tambah jurusan</button>
+    <button><a href="tambah_jurusan.php">Tambah Jurusan</a></button>
 </div>

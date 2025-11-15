@@ -1,8 +1,8 @@
 <div class="nav">
 	<ul>
 		<li><a href="index.php">Beranda</a></li>
-		<li><a href="">Profil Sekolah</a></li>
-		<li><a href="">Panduan PPDB</a></li>
+		<li><a href="#vimisi">Visi-Misi</a></li>
+		<li><a href="#pendaftaran">Pendafataran</a></li>
 		<li><a href="">Daftar Guru</a></li>
 	</ul>
 	<ul>

@@ -24,24 +24,14 @@ a {
 .logo span {
   color: blue;
 }
+
 .header {
   background: #ffff;
   padding-left: 1rem;
+  /* position: fixed; */
 }
 /* navbar */
-.nav button {
-  padding: 5px 20px;
-  background-color: #bbdefb;
-  border-radius: 10px;
-  font-size: 15px;
-  border: none;
-}
-.nav button {
-  padding: 3px 10px;
-  background-color: #bbdefb;
-  border-radius: 20px;
-  font-size: 15px;
-}
+
 .nav button {
   padding: 5px 20px;
   background-color: #2196f3;
@@ -51,7 +41,7 @@ a {
 }
 
 .nav button:hover {
-  background-color: yellow;
+  background-color: #bbdefb;
 }
 .nav {
   padding: 0rem 1rem;
@@ -61,7 +51,9 @@ a {
   flex-direction: row;
   justify-content: space-between;
   border-bottom: blue 1px solid;
+
 }
+
 ul {
   list-style: none;
 }
@@ -81,6 +73,7 @@ ul {
 footer {
   background-color: #1565c0;
   padding: 30px;
+  margin-top: 5%;
 }
 .footer {
   display: flex;
@@ -349,10 +342,14 @@ footer li {
 }
 
 /* Panduan PPDB */
-.bacgron_ppdb {
+.backgron_ppdb {
   background-color: #fff;
+  padding-top: 5%;
 }
-
+.bacgron_ppdb{
+  margin-top: 5%;
+  /* padding: 20px; */
+}
 .judul_tengah {
   text-align: center;
   font-size: 2em;
@@ -385,8 +382,9 @@ footer li {
   text-align: center;
   padding: 25px 15px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(216, 214, 214, 0.562);
+  box-shadow: 0 4px 6px rgba(164, 164, 164, 0.773);
   min-height: 150px;
+  background-color: #2195f32d;
 }
 
 /* Detail Dokumen PPDB */
@@ -396,6 +394,7 @@ footer li {
   margin: auto;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 .bacgron_detail h1 {
@@ -422,4 +421,34 @@ footer li {
 .isi_detail {
   padding: 10px;
   text-align: left;
+}
+
+/* pendafftar admin */
+.pendaftar{
+  display: flex;
+  justify-content: center;
+  padding: 2% 0%;
+}
+.pendaftar div{
+  background-color: white;
+  width: 80%;
+  padding: 1% 2%;
+  border-radius: 10px;
+}
+.pendaftar table{
+  width: 100%;
+  border-collapse: collapse;
+  /* border-radius: 10px; */
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.pendaftar th,.pendaftar td{
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+.pendaftar th{
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
 }
