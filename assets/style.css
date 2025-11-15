@@ -254,17 +254,19 @@ footer li {
   padding: 40px 20px;
   margin: 0 auto;
   text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 .dashboard1 p {
   font-size: 25px;
   font-weight: bold;
 }
-.dashboard1 ul li {
+.dashboard1 ol li {
   font-size: 20px;
 }
 
-.dashboard1 ul li {
-  font-size: 20px;
+.dashboard1 h1 {
+  margin: 30px 0px;
 }
 
 /* jurusan */
@@ -318,13 +320,106 @@ footer li {
 
 .harap_login {
   font-family: sans-serif;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   align-items: center;
   background-color: #fff;
-  margin: 80px;
+  margin: 160px;
   border-radius: 15px;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
   box-shadow: 5px 5px 0 0 rgb(160, 160, 160);
+  padding: 40px;
+}
+
+.harap_login p {
+  display: flex;
+  justify-content: centerx;
+}
+
+.harap_login a {
+  color: #1565c0;
+  font-weight: bold;
+}
+
+.harap_login h1 {
+  color: red;
+  display: flex;
+  justify-content: center;
+}
+
+/* Panduan PPDB */
+.bacgron_ppdb {
+  background-color: #fff;
+}
+
+.judul_tengah {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.panduan_ppdb {
+  background-color: #fff;
+  padding: 40px 20px;
+  margin: 0 auto;
+  font-size: larger;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.panduan_ppdb_tgl {
+  background-color: #fff;
+  padding: 40px 20px;
+  margin: 0 auto;
+  font-size: larger;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 700px;
+}
+
+.kolom_panduan {
+  text-align: center;
+  padding: 25px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(216, 214, 214, 0.562);
+  min-height: 150px;
+}
+
+/* Detail Dokumen PPDB */
+.bacgron_detail {
+  background-color: #fff;
+  max-width: 1000px;
+  margin: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bacgron_detail h1 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 25px;
+}
+
+.kolom_detail {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1px;
+}
+
+.kolom_detail .kolom_detail_1 {
+  background-color: #1565c0;
+  color: white;
+  padding: 12px 10px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.isi_detail {
+  padding: 10px;
+  text-align: left;
 }

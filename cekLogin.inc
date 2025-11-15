@@ -12,7 +12,16 @@
 	require_once 'includes/navbar.php';
 	?>
 	<div class="harap_login">
-		<p>Harus login Terlebih Dahulu <a href="../login.php">login</a></p>
+		<tr>
+			<th>
+				<h1>Warning</h1>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<p>Harus login Terlebih Dahulu.<a href="../login.php">Login</a></p>
+			</td>
+		</tr>
 	</div>
 
 <?php 

@@ -2,25 +2,90 @@
 	<h1>Sekolah Inklusi</h1>
 	<div class="isi">
 
+
 		<p>Sekolah Inklusi merupakan sekolah yang menerapkan pendidikan inklusif, 
 			di mana setiap anak baik anak reguler maupun anak berkebutuhan khusus memiliki hak yang sama 
 			untuk mendapatkan pendidikan yang layak, bermutu, dan ramah terhadap keberagaman.</p><br>
 		<p>Sekolah ini berkomitmen untuk menciptakan lingkungan belajar yang inklusif, aman, dan menyenangkan. 
 			Melalui pendekatan pendidikan berbasis kebutuhan individual, setiap peserta didik didampingi agar mampu berkembang sesuai potensi dan kemampuannya.</p>
+		<p>SMA Inklusi merupakan sekolah yang menerapkan pendidikan inklusif, di mana setiap remaja, baik peserta didik reguler maupun berkebutuhan khusus, memiliki hak yang sama untuk mendapatkan pendidikan jenjang menengah atas yang layak, bermutu, dan adaptif terhadap keberagaman.</p><br>
+		<p>Sekolah ini berkomitmen untuk menciptakan lingkungan belajar yang inklusif, aman, dan kolaboratif. Melalui pendekatan kurikulum berbasis kebutuhan individual (PPI) dan peningkatan kompetensi abad ke-21, setiap peserta didik didampingi agar mampu berkembang sesuai potensi, minat, dan persiapan mereka menuju dunia kerja atau perguruan tinggi.</p>
 	</div>
 	<button><a href="/ta_paw/siswa/pendaftaran.php">Daftar Sekarang</a></button>
 </div>
 <div class="dashboard1">
 	<div>
 	<h1>VISI</h1>
-	<p>"Menjadi sekolah inklusi yang ramah anak, berkarakter, dan unggul dalam prestasi akademik maupun non-akademik."</p>
+	<p>"Terwujudnya Generasi Emas yang Inklusif, Berkarakter Kuat, Mandiri, dan Unggul dalam Pencapaian Akademik dan Non-Akademik di Era Global."</p>
 	<h1>MISI</h1>
-	<ul>
-		<li>Menyelenggarakan pendidikan yang menghargai keberagaman dan perbedaan setiap peserta didik.</li>
-		<li>Memberikan layanan pendidikan sesuai dengan kebutuhan dan potensi siswa, termasuk siswa berkebutuhan khusus (ABK).</li>
-		<li>Mengembangkan lingkungan sekolah yang aman, nyaman, dan inklusif.</li>
-		<li>Meningkatkan kompetensi guru dalam pembelajaran diferensiasi dan pendidikan inklusif.</li>
-		<li>Menjalin kerja sama dengan orang tua dan lembaga terkait untuk mendukung tumbuh kembang siswa.</li>
-	</ul>
+	<ol>
+        <li>Mewujudkan Ekosistem Pembelajaran Adaptif: Menciptakan dan menyelenggarakan program pendidikan yang adaptif dan diferensiasi sesuai dengan kebutuhan, minat, dan potensi unik setiap peserta didik (termasuk Anak Berkebutuhan Khusus/ABK).</li>
+        <li>Menumbuhkan Karakter dan Kemandirian: Mengembangkan peserta didik yang memiliki karakter Pancasila, integritas tinggi, serta memiliki kemampuan hidup mandiri (life skill) yang kuat.</li>
+        <li>Mengoptimalkan Potensi Prestasi: Memfasilitasi pengembangan bakat, minat, dan potensi peserta didik agar mencapai prestasi akademik dan non-akademik yang unggul melalui pendampingan khusus.</li>
+        <li>Menguatkan Kompetensi Tenaga Pendidik: Secara berkelanjutan meningkatkan kompetensi profesional guru dalam praktik pembelajaran inklusif, strategi diferensiasi, dan penggunaan teknologi pendidikan.</li>
+        <li>Membangun Kemitraan Strategis: Menjalin sinergi yang kuat dan berkelanjutan dengan orang tua, lembaga layanan profesional (psikolog/terapis), dan komunitas untuk menjamin tumbuh kembang holistik peserta didik.</li>
+    </ol>
+	</div>
+</div>
+
+<div class="bacgron_ppdb">
+	<h1 class="judul_tengah">Jadwal Pendaftaran online</h1>
+	<div class="panduan_ppdb_tgl">
+		<div class="kolom_panduan_tgl">
+			<h3>Gelombang 1</h3>
+			<p>[Tgl Awal Gel 1] - [Tgl Akhir Gel 1] Prioritas untuk calon siswa yang memerlukan asesmen khusus dan rekomendasi cepat.</p>
+		</div>
+		<div class="kolom_panduan_tgl">
+			<h3>Gelombang 2</h3>
+			<p>[Tgl Awal Gel 2] - [Tgl Akhir Gel 2] Kesempatan kedua, dibuka berdasarkan sisa kuota yang tersedia setelah Gelombang 1.</p>
+		</div>
+	</div>
+</div>
+
+<div class="bacgron_ppdb">
+	<h1 class="judul_tengah">Alur Pendaftaran PPDB</h1>
+		<div class="panduan_ppdb">
+		<div class="kolom_panduan">
+			<h3>Register</h3>
+			<p>Siswa diwajibkan membuat akun PPDB terlebih dengan cara Register</p>
+		</div>
+		<div class="kolom_panduan">
+			<h3>Login</h3>
+			<p>Siswa jika inggin mengakses fitur yang ada dialamnya harus login terlebih dahulu</p>
+		</div>
+		<div class="kolom_panduan">
+			<h3>Melengkapi Dokumen</h3>
+			<p>Siswa yang ingin mendaftar diwajibkan untuk mengisi data diri</p>
+		</div>
+	</div>
+</div>
+<div class="bacgron_ppdb">
+	<div class="bacgron_detail">
+		<h1>Detail Dokumen PPDB</h1>
+		<div class="kolom_detail">
+			<div class="kolom_detail_1">Dokumen / Data</div>
+			<div class="kolom_detail_1">Keterangan Detail</div>
+
+			<div class="isi_detail">Laporan Asesmen</div>
+			<div class="isi_detail">Laporan terbaru (maks. 1-2 tahun) dari Psikolog/Spesialis yang menjelaskan jenis Kebutuhan Khusus Siswa dan rekomendasi penanganan. (Wajib untuk penyusunan PPI).</div>
+			
+			<div class="isi_detail">Surat Pernyataan Kerja Sama</div>
+			<div class="isi_detail">Surat bermaterai yang menyatakan Kesanggupan Orang Tua untuk bekerja sama dengan Guru Pendamping Khusus (GPK) dan sekolah.</div>
+			
+			<div class="isi_detail">Kartu Keluarga (KK)</div>
+			<div class="isi_detail">Fotokopi KK yang dilegalisir, untuk verifikasi Domisili.</div>
+			
+			<div class="isi_detail">Akta Kelahiran</div>
+			<div class="isi_detail">Fotokopi Akta Kelahiran yang dilegalisir, untuk verifikasi Tempat Lahir dan Tanggal Lahir.</div>
+			
+			<div class="isi_detail">Ijazah/SKL</div>
+			<div class="isi_detail">Fotokopi Ijazah jenjang sebelumnya yang dilegalisir (atau Surat Keterangan Lulus/SKL).</div>
+			
+			<div class="isi_detail">Foto Siswa</div>
+			<div class="isi_detail">Pas foto terbaru (ukuran 3x4 atau 4x6 cm).</div>
+			
+			<div class="isi_detail">Data Lain-lain</div>
+			<div class="isi_detail">Informasi yang dibutuhkan untuk melengkapi profil siswa di formulir pendaftaran.</div>
+		</div>
 	</div>
 </div>
