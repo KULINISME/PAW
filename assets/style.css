@@ -423,3 +423,121 @@ footer li {
   padding: 10px;
   text-align: left;
 }
+
+/* Foom Pendaftaran */
+.form_pendaftaran {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 5px 5px 0 0 rgb(160, 160, 160);
+  margin: 50px auto;
+  width: 90%;
+  max-width: 1300px;
+  padding: 30px;
+}
+
+.form_pendaftaran form {
+  width: 100%;
+}
+
+.form_pendaftaran label {
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  margin-top: 15px;
+}
+
+.form_pendaftaran h1 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.form_pendaftaran h2 {
+  margin-top: 30px;
+}
+
+.form_pendaftaran hr {
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+.form_pendaftaran input[type="text"],
+.form_pendaftaran input[type="email"],
+.form_pendaftaran input[type="date"],
+.form_pendaftaran input[type="number"],
+.form_pendaftaran input[type="file"],
+.form_pendaftaran select {
+  padding: 12px;
+  height: auto;
+  min-height: 35px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 3px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.isi_pendaftaran {
+  width: 100%;
+}
+
+.form_isi {
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+.form_isi label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.form_isi input[type="text"],
+.form_isi input[type="number"],
+.form_isi input[type="file"],
+.form_isi select {
+  width: 100%;
+}
+
+.radio-group-horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.radio-group-horizontal label {
+  font-weight: normal;
+  display: inline;
+  margin-right: 5px;
+  margin-top: 0;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.form_pendaftaran button {
+  background-color: #2196f3;
+  color: white;
+  border-radius: 5px;
+  width: 180px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
