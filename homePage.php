@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div class="dashboard" id="isi">
 	<h1>Sekolah Inklusi</h1>
 	<div class="isi">
 
@@ -9,13 +9,14 @@
 		<p>Sekolah ini berkomitmen untuk menciptakan lingkungan belajar yang inklusif, aman, dan menyenangkan. 
 			Melalui pendekatan pendidikan berbasis kebutuhan individual, setiap peserta didik didampingi agar mampu berkembang sesuai potensi dan kemampuannya.</p>
 	</div>
-	<button><a href="/ta_paw/siswa/pendaftaran.php">Daftar Sekarang</a></button>
+	<button class="dasbuton"><a href="/ta_paw/siswa/pendaftaran.php">Daftar Sekarang</a></button>
 </div>
 <div class="dashboard1" id="vimisi">
-	<div>
+	<div class="visi" id="visi">
 	<h1>VISI</h1>
 	<p>"Terwujudnya Generasi Emas yang Inklusif, Berkarakter Kuat, Mandiri, dan Unggul dalam Pencapaian Akademik dan Non-Akademik di Era Global."</p>
 	<h1>MISI</h1>
+	</div>
 	<ol>
         <li>Mewujudkan Ekosistem Pembelajaran Adaptif: Menciptakan dan menyelenggarakan program pendidikan yang adaptif dan diferensiasi sesuai dengan kebutuhan, minat, dan potensi unik setiap peserta didik (termasuk Anak Berkebutuhan Khusus/ABK).</li>
         <li>Menumbuhkan Karakter dan Kemandirian: Mengembangkan peserta didik yang memiliki karakter Pancasila, integritas tinggi, serta memiliki kemampuan hidup mandiri (life skill) yang kuat.</li>
@@ -25,7 +26,6 @@
     </ol>
 	</div>
 </div>
-
 <div class="backgron_ppdb" id="pendaftaran">
 	<h1 class="judul_tengah">Jadwal Pendaftaran online</h1>
 	<div class="panduan_ppdb_tgl">
@@ -39,8 +39,7 @@
 		</div>
 	</div>
 </div>
-
-<div class="backgron_ppdb">
+<div class="backgron_ppdb" id="alur">
 	<h1 class="judul_tengah">Alur Pendaftaran PPDB</h1>
 		<div class="panduan_ppdb">
 		<div class="kolom_panduan">
@@ -57,7 +56,7 @@
 		</div>
 		</div>
 </div>
-<div class="bacgron_ppdb">
+<div class="backgron_ppdb" id="detail">
 	<div class="bacgron_detail">
 		<h1>Detail Dokumen PPDB</h1>
 		<div class="kolom_detail">

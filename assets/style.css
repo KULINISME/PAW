@@ -41,6 +41,7 @@ a {
 }
 
 .nav button:hover {
+  background-color: #83b3ea;
   background-color: #bbdefb;
 }
 .nav {
@@ -51,8 +52,8 @@ a {
   flex-direction: row;
   justify-content: space-between;
   border-bottom: blue 1px solid;
-
 }
+/* position: fixed; */
 
 ul {
   list-style: none;
@@ -66,7 +67,7 @@ ul {
   color: rgb(0, 0, 0);
 }
 .nav a:hover {
-  color: yellow;
+  color: #6aa7ec;
 }
 
 /* footer */
@@ -82,10 +83,20 @@ footer {
 }
 footer h3 {
   font-size: 1rem;
+  color: white;
 }
 footer p,
-footer li {
+footer a {
   font-size: 0.8rem;
+  color: white;
+}
+
+footer a:href {
+  color: #000;
+}
+
+.media li {
+  color: white;
 }
 
 /* Login */
@@ -129,6 +140,7 @@ footer li {
   font-size: 16px;
   font-weight: bold;
   border: none;
+  color: white;
 }
 
 .login p {
@@ -227,6 +239,14 @@ footer li {
   margin-bottom: 20px;
   margin: 20px;
 }
+
+.dasbuton {
+  color: #6aa7ec;
+}
+
+.dashboard a:hover {
+  color: white;
+}
 .dashboard p {
   font-size: 1.1rem;
   line-height: 1.7;
@@ -240,11 +260,19 @@ footer li {
   font-size: 2rem;
 }
 
-.dashboard1 {
+.visi {
+  background-color: #fff;
+  padding: 20px 10px;
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.dashboard1 ol {
   background-color: #fff;
   padding: 40px 20px;
   margin: 0 auto;
-  text-align: center;
+  text-align: justify;
   padding-left: 10%;
   padding-right: 10%;
 }
@@ -342,9 +370,10 @@ footer li {
 /* Panduan PPDB */
 .backgron_ppdb {
   background-color: #fff;
+  padding-bottom: 50px;
   padding-top: 5%;
 }
-.bacgron_ppdb{
+.bacgron_ppdb {
   margin-top: 5%;
   /* padding: 20px; */
 }
@@ -382,7 +411,14 @@ footer li {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(164, 164, 164, 0.773);
   min-height: 150px;
-  background-color: #2195f32d;
+  background-color: #ffffff2d;
+}
+.kolom_panduan_tgl {
+  text-align: center;
+  padding: 25px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(216, 214, 214, 0.562);
+  min-height: 150px;
 }
 
 /* Detail Dokumen PPDB */
@@ -408,7 +444,7 @@ footer li {
 }
 
 .kolom_detail .kolom_detail_1 {
-  background-color: #1565c0;
+  background-color: #2196f3;
   color: white;
   padding: 12px 10px;
   font-weight: bold;
@@ -422,30 +458,31 @@ footer li {
 }
 
 /* pendafftar admin */
-.pendaftar{
+.pendaftar {
   display: flex;
   justify-content: center;
   padding: 2% 0%;
 }
-.pendaftar div{
+.pendaftar div {
   background-color: white;
   width: 80%;
   padding: 1% 2%;
   border-radius: 10px;
 }
-.pendaftar table{
+.pendaftar table {
   width: 100%;
   border-collapse: collapse;
   /* border-radius: 10px; */
   background: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.pendaftar th,.pendaftar td{
+.pendaftar th,
+.pendaftar td {
   padding: 12px 15px;
   border: 1px solid #ddd;
   text-align: center;
 }
-.pendaftar th{
+.pendaftar th {
   background-color: #4caf50;
   color: white;
   font-weight: bold;
@@ -568,7 +605,7 @@ footer li {
   margin-right: auto;
 }
 /* admin dashboard */
-.dashboard_admin{
+.dashboard_admin {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -576,12 +613,12 @@ footer li {
   text-align: center;
   margin-top: 10%;
 }
-.dashboard_admin div{
+.dashboard_admin div {
   background-color: white;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-.dashboard_admin h3{
+.dashboard_admin h3 {
   color: #1565c0;
 }
