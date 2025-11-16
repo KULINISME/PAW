@@ -6,14 +6,13 @@ $daftar=admin();
 ?>
 <div class="pendaftar">
     <div>
-        <h2>Calon Siswa</h2>
+        <h2>Siswa</h2>
         <table>
             <tr>
                 <th>Nama</th>
                 <th>Jurusan</th>
                 <th>Kebutuhan</th>
                 <th>status</th>
-                <th>Aksi</th>
             </tr>
             <?php 
             foreach($daftar as $row): 
@@ -24,7 +23,6 @@ $daftar=admin();
                 <td><?=$row['NAMA_JURUSAN']?></td>
                 <td><?=$row['NAMA_KEBUTUHAN']?></td>
                 <td><?=$row['JENIS_STATUS_SISWA']?></td>
-                <td><button name="lulus"><a href="edit_status.php?ID_PENDAFTARAN=<?=$row['ID_PENDAFTAR_SISWA']?>&kondisi=lulus">lulus</a></button><button name="gagal"><a href="edit_status.php?ID_PENDAFTARAN=<?=$row['ID_PENDAFTAR_SISWA']?>&kondisi=gagal">Tidak Lulus</a></button></td>
             </tr>
             <?php endif;endforeach;?>
         </table>
