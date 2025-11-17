@@ -8,36 +8,40 @@
         <br>
             <h1>Register</h1>
             <br>
-            <br>
             <table>
                 <tr>
                     <td>
-                        <label for="">Nama Lengkap</label>
+                        <label for="nama">Nama Lengkap</label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="nama">
+                        <input type="text" id="nama" name="nama">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="">Email</label>
+                        <label for="email">Email</label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="email">
+                        <input type="text" id="email" name="email">
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <label for="">Password</label>
+                        <label for="pass">Password</label>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" name="pass">
+                        <input type="text" id="pass" name="pass">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Sudah punya akun ? <a href="login.php">Login</a></p>
                     </td>
                 </tr>
                 <tr>
@@ -45,8 +49,7 @@
                     <button type="submit" name="submit">Submit</button> 
                     </th> 
                 </tr>
-            </table>
-            <br>
+            </table> 
     </form>
 </div>
 <?php
