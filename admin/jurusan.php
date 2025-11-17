@@ -1,14 +1,8 @@
 <?php
     require_once '../database.php';
-    // if (isset($_POST['submit'])) {
-        $stmnt=$pdo->prepare("SELECT * FROM jurusan");
-        $stmnt->execute();
-        $jurusan=$stmnt->fetchAll();
-    // }
-    
-
     require_once '../includes/header.php';
     require_once '../includes/navbarAdmin.php';
+    $jurusan=jurusan();
 ?>
 <div class="jurusan">
     <h1>Daftar Jurusan</h1>

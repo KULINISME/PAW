@@ -1,21 +1,36 @@
-
 <?php
+require_once '../cekLogin.inc';
 require_once '../includes/header.php';
 require_once '../includes/navbarAdmin.php';
 require_once '../database.php';
-$daftar=admin();
+$daftar=pendaftar();
 $lolos=lulus();
+$gagal=gagal();
+$pendaftar=lulus()+pendaftar()+gagal();
+$jurusan=jurusan();
 ?>
-<div class="dashboard_admin">
-    <div>
-        <h3>Jumlah Pendaftar</h3><hr>
-        <h4><?= count($daftar) ?></h4>
-    </div>    
-    <div>
-        <h3>Jumlah Diterima</h3><hr>
-        <h4><?= count($lolos) ?></h4>
+<div class="container_admin">
+    <h1>Informasi Siswa</h1>
+    <div class="dashboard_admin">
+        <div>
+            <h3>Jumlah Pendaftar</h3><hr>
+            <h4><?= count($pendaftar) ?></h4>
+        </div>    
+        <div>
+            <h3>Jumlah Diterima</h3><hr>
+            <h4><?= count($lolos) ?></h4>
+        </div>
+        <div>
+            <h3>Jumlah Ditolak</h3><hr>
+            <h4><?=count($gagal)?></h4>
+        </div>
     </div>
-    <div>
-        <h3>Jumlah Ditolak</h3><hr>
+    <h1>Jurusan</h1>
+    <div class="admin_jurusan">
+        <?php foreach($jurusan as $data): ?>
+        <div>
+            <h3><?=$data['NAMA_JURUSAN']?></h3>
+        </div>
+        <?php endforeach; ?>
     </div>
 </div>

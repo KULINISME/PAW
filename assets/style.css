@@ -38,6 +38,7 @@ a {
   border-radius: 10px;
   font-size: 15px;
   border: none;
+  color: white;
 }
 
 .nav button:hover {
@@ -98,6 +99,8 @@ footer a:href {
 .media li {
   color: white;
 }
+/* container */
+
 
 /* Login */
 .login {
@@ -200,10 +203,13 @@ footer li {
 
 /* header */
 /* dashboard */
+
+
+
 .dashboard {
   min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.612), rgba(0, 0, 0, 0.5)),
-    url("../img/sekolah.jpg") center/cover no-repeat; /* sesuaikan nama file */
+    url("../img/sekolah.jpg") center/cover no-repeat; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -211,8 +217,6 @@ footer li {
   color: #fff;
   text-align: center;
   padding: 40px 20px;
-  /* margin: 40px; */
-  /* border-radius: 10px; */
 }
 .dashboard h1 {
   font-size: 2.8rem;
@@ -259,19 +263,28 @@ footer li {
   font-weight: 600;
   font-size: 2rem;
 }
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  gap: 20px;
 
-.visi {
-  background-color: #fff;
-  padding: 20px 10px;
-  margin: 0 auto;
+}
+.container > div{
+  border-radius: 20px;
+}
+
+.dashboard1{
+  width: 85%;
+  background-color: white;
   text-align: center;
-  padding-left: 10%;
-  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
 }
 .dashboard1 ol {
-  background-color: #fff;
-  padding: 40px 20px;
-  margin: 0 auto;
   text-align: justify;
   padding-left: 10%;
   padding-right: 10%;
@@ -284,9 +297,6 @@ footer li {
   font-size: 20px;
 }
 
-.dashboard1 h1 {
-  margin: 30px 0px;
-}
 
 /* jurusan */
 .jurusan {
@@ -370,18 +380,36 @@ footer li {
 /* Panduan PPDB */
 .backgron_ppdb {
   background-color: #fff;
+  width: 80%;
   padding-bottom: 50px;
   padding-top: 5%;
-}
-.bacgron_ppdb {
-  margin-top: 5%;
-  /* padding: 20px; */
 }
 .judul_tengah {
   text-align: center;
   font-size: 2em;
   font-weight: bold;
   margin-bottom: 30px;
+}
+.panduan_ppdb_tgl {
+  padding: 40px 20px;
+  margin: 0 auto;
+  font-size: larger;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 700px;
+}
+.kolom_panduan_tgl {
+  background-color: #fff;
+  text-align: center;
+  padding: 25px 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(216, 214, 214, 0.562);
+  min-height: 150px;
+}
+.bacgron_ppdb {
+  margin-top: 5%;
+  /* padding: 20px; */
 }
 
 .panduan_ppdb {
@@ -394,16 +422,6 @@ footer li {
   gap: 20px;
 }
 
-.panduan_ppdb_tgl {
-  background-color: #fff;
-  padding: 40px 20px;
-  margin: 0 auto;
-  font-size: larger;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 700px;
-}
 
 .kolom_panduan {
   text-align: center;
@@ -412,13 +430,6 @@ footer li {
   box-shadow: 0 4px 6px rgba(164, 164, 164, 0.773);
   min-height: 150px;
   background-color: #ffffff2d;
-}
-.kolom_panduan_tgl {
-  text-align: center;
-  padding: 25px 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(216, 214, 214, 0.562);
-  min-height: 150px;
 }
 
 /* Detail Dokumen PPDB */
@@ -487,7 +498,7 @@ footer li {
   color: white;
   font-weight: bold;
 }
-/* Foom Pendaftaran */
+/* Form Pendaftaran */
 .form_pendaftaran {
   font-family: sans-serif;
   display: flex;
@@ -605,13 +616,26 @@ footer li {
   margin-right: auto;
 }
 /* admin dashboard */
+.container_admin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  gap: 30px;
+}
+.container_admin>h1{
+  color: #1565c0;
+}
 .dashboard_admin {
   display: flex;
   flex-direction: row;
+  /* align-items: center; */
   justify-content: center;
+  /* background-color: white; */
   gap: 5%;
   text-align: center;
-  margin-top: 10%;
+  width: 85%;
+  /* margin-top: 10%; */
 }
 .dashboard_admin div {
   background-color: white;
@@ -620,5 +644,19 @@ footer li {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 .dashboard_admin h3 {
+  color: #1565c0;
+}
+.admin_jurusan{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5%;
+  text-align: center;
+}
+.admin_jurusan>div{
+  background-color: white;
+  padding: 20px;
+}
+.admin_jurusan h3{
   color: #1565c0;
 }

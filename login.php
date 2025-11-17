@@ -27,9 +27,7 @@ if (isset($_POST['submit'])) {
             echo 'calon siswa';
             header('Location: siswa');
         }
-    }else{
-            echo "username atau password ada yang salah";
-        }
+    }
 }
 
  require_once 'includes/header.php';
