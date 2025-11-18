@@ -114,6 +114,13 @@ function kebutuhan(){
     $kebutuhan=$stmnt->fetchAll();
     return $kebutuhan;
 }
+function lastInsertId(){
+    global $pdo;
+    $stmnt=$pdo->prepare("SELECT ID_PENDAFTAR_SISWA FROM pendaftaran ORDER BY ID_PENDAFTAR_SISWA DESC LIMIT 1");
+    $stmnt->execute();
+    $id=$stmnt->fetch();
+    return $id;
+}
 // function register(array $data){
 
 //     $stmnt=$pdo

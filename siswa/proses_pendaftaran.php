@@ -1,6 +1,6 @@
 <?php 
     require_once '../database.php';
-
+$lastIdPendaftar=lastInsertId();
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     $kk=$_FILES['kk'];
     $name_kk=$kk['name'];
@@ -54,4 +54,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         ':SLIP_GAJI'=>$_POST['slip_gaji'],
         ':Gaji_Wali'=>1000000
     ]);
+    $stmnt2=$pdo->prepare
+    ("INSERT INTO pendaftaran_kebutuhan (ID_PENDAFTAR_SISWA,ID_KEBUTUHAN) 
+    VALUES (:ID_PENDAFTAR_SISWA,:ID_KEBUTUHAN)");
+    $stmnt2->execute([
+        ':ID_PENDAFTAR_SISWA'=>$lastIdPendaftar['ID_PENDAFTAR_SISWA'],
+        ':ID_KEBUTUHAN'=>$_POST['kebutuhan']
+    ]);
 }
+header("Location: index.php");
