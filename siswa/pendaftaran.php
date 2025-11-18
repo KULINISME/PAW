@@ -1,11 +1,14 @@
 <?php 
 // session_start();
+require_once "../database.php";
 require_once "../cekLogin.inc";
 require_once "../includes/header.php";
 require_once "../includes/navbarSiswa.php";
+$jurusan=jurusan();
+$kebutuhan=kebutuhan();
  ?>
 <div class="form_pendaftaran">
-    <h1>Form Pendaftaran Siswa Baru PPDB Sekolah Inklusi</h1>
+    <h1>Form PPDB Sekolah Inklusi</h1>
     <form action="proses_pendaftaran.php" method="POST" enctype="multipart/form-data" class="isi_pendaftaran">
         
         <h2>Data Pribadi Siswa</h2>
@@ -24,7 +27,7 @@ require_once "../includes/navbarSiswa.php";
         <div class="form_isi">
             <label>Jenis Kelamin :</label>
             <div class="radio-group-horizontal">
-                <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki">
+                <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-Laki">
                 <label for="laki-laki">Laki-laki</label>
                 
                 <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan">
@@ -34,7 +37,7 @@ require_once "../includes/navbarSiswa.php";
 
         <div class="form_isi">
             <label>Agama :</label>
-            <input type="text" id="agama" name="agama_siswa">
+            <input type="text" id="agama" name="agama">
         </div>
         
         <div class="form_isi">
@@ -44,7 +47,7 @@ require_once "../includes/navbarSiswa.php";
         
         <div class="form_isi">
             <label for="tgl_lahir">Tanggal Lahir :</label>
-            <input type="date" id="tgl_lahir" name="tanggal_lahir">
+            <input type="text" id="tgl_lahir" name="tanggal_lahir">
         </div>
         
         <div class="form_isi">
@@ -61,8 +64,9 @@ require_once "../includes/navbarSiswa.php";
             <label for="jurusan">Pilihan Jurusan :</label>
             <select id="jurusan" name="id_jurusan">
                 <option value="">-- Pilih Jurusan --</option>
-                <option value="1">IPA (Ilmu Pengetahuan Alam)</option>
-                <option value="2">IPS (Ilmu Pengetahuan Sosial)</option>
+                <?php foreach($jurusan as $data): ?>
+                <option value="<?= $data['ID_JURUSAN'] ?>"><?= $data['NAMA_JURUSAN'] ?></option>
+                <?php endforeach; ?>
             </select>
         </div>
         
@@ -70,7 +74,9 @@ require_once "../includes/navbarSiswa.php";
         <hr>
         <div class="form_isi">
             <label for="kebutuhan">Masukan Jika Siswa Memiliki Kebutuhan Khusus :</label>
-           <input type="text" id="id_kebutuhan" name="kebutuhan">
+            <?php foreach($kebutuhan as $kbth): ?>
+            <input type="checkbox" id="id_kebutuhan" name="kebutuhan" value="<?= $kbth['ID_KEBUTUHAN'] ?>"><span> <?= $kbth['NAMA_KEBUTUHAN'] ?></span>
+            <?php endforeach; ?>
         </div>
         <h2>Data Dokumen</h2>
         <hr>
@@ -79,7 +85,7 @@ require_once "../includes/navbarSiswa.php";
             <label for="kk" >Kartu Keluarga : (Max ukuran file 5 mb jpg,png,tiff.)</label>
             <input type="file" 
                 id="pas_foto" 
-                name="foto_siswa" 
+                name="kk" 
                 accept=".jpg, .jpeg, .png" 
             >
         </div>
@@ -88,7 +94,7 @@ require_once "../includes/navbarSiswa.php";
             <label for="akta">Akte Kelahiran : (Max ukuran file 5 mb jpg,png,tiff. )</label>
             <input type="file" 
                 id="pas_foto" 
-                name="foto_siswa" 
+                name="akta" 
                 accept=".jpg, .jpeg, .png" 
             >
         </div>
@@ -97,7 +103,7 @@ require_once "../includes/navbarSiswa.php";
             <label for="ijazah">Ijazah / SKL (Surat keterangan Lulus) : (Max ukuran file 5 mb jpg,png,tiff.)</label>
             <input type="file" 
                 id="pas_foto" 
-                name="foto_siswa" 
+                name="ijazah" 
                 accept=".jpg, .jpeg, .png" 
             >
         </div>
@@ -106,7 +112,7 @@ require_once "../includes/navbarSiswa.php";
             <label for="pas_foto">Foto Pas Siswa (Upload) : (Max ukuran file 5 mb jpg,png,tiff.)</label>
             <input type="file" 
                 id="pas_foto" 
-                name="foto_siswa" 
+                name="foto" 
                 accept=".jpg, .jpeg, .png" 
             >
         </div>

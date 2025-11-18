@@ -107,7 +107,13 @@ function jurusan(){
     $jurusan=$stmnt->fetchAll();
     return $jurusan;
 }
-
+function kebutuhan(){
+    global $pdo;
+    $stmnt=$pdo->prepare("SELECT * FROM kebutuhan_siswa");
+    $stmnt->execute();
+    $kebutuhan=$stmnt->fetchAll();
+    return $kebutuhan;
+}
 // function register(array $data){
 
 //     $stmnt=$pdo
