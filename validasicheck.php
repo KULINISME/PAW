@@ -1,6 +1,6 @@
 <?php
 
-require_once 'validtest.php';
+require_once 'validasi.php';
 
 
 $errors = []; // Wadah untuk menampung error
@@ -98,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <?php if (!empty($errors['kode_daftar'])): ?>
                 <span class="error"><?php echo $errors['kode_daftar']; ?></span>
             <?php endif; ?>
-        </div>
+        </div> 
 
         <div>
             <label for="password">Password (Wajib, min 8 karakter):</label>

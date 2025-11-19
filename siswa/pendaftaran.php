@@ -3,6 +3,53 @@
 require_once "../cekLogin.inc";
 require_once "../includes/header.php";
 require_once "../includes/navbarSiswa.php";
+require_once 'validasi.php';
+
+
+$errors = []; // Wadah untuk menampung error
+$pesan_sukses = ""; // Pesan jika berhasil
+
+$nama = '';
+$nisn = '';
+$kode_daftar = '';
+$password = '';
+$tgl_lahir = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    //Ambil semua data dari form
+    $nama = $_POST['nama'];
+    $nisn = $_POST['nisn'];
+    $kode_daftar = $_POST['kode_daftar'];
+    $password = $_POST['password'];
+    $tgl_lahir = $_POST['tgl_lahir'];
+
+    // Nama (Wajib, Alfabet)
+    val_required($errors, 'nama_siswa', $nama, 'Nama wajib diisi.');
+    val_alpha($errors, 'nama_siswa', $nama, 'Nama harus berupa huruf dan spasi.');
+
+    // Agama (Wajib, Alfabet)
+    val_required($errors, 'agama_siswa', $nama, 'Agama wajib diisi.');
+    val_alpha($errors, 'agama_siswa', $nama, 'Agama harus berupa huruf dan spasi.');
+
+    // NISN (Wajib, Numerik, Panjang Tepat 10)
+    val_required($errors, 'nisn', $nisn, 'NISN wajib diisi.');
+    val_numeric($errors, 'nisn', $nisn, 'NISN harus berupa angka.');
+    val_exact_length($errors, 'nisn', $nisn, 10, 'NISN harus 10 digit.');
+
+    // (Wajib, Alfanumerik)
+    val_required($errors, 'kode_daftar', $kode_daftar, 'Kode Pendaftaran wajib diisi.');
+    val_alphanumeric($errors, 'kode_daftar', $kode_daftar, 'Kode Pendaftaran harus alfanumerik (huruf & angka, tanpa spasi).');
+
+    //  Password (Wajib, Format/Panjang Minimal 8)
+    val_required($errors, 'password', $password, 'Password wajib diisi.');
+    val_password_format($errors, 'password', $password, 8, 'Password minimal 8 karakter.'); 
+
+
+    if (empty($errors)) {
+        $pesan_sukses = "SELAMAT! Semua data yang Anda masukkan VALID.";
+    }
+}
  ?>
 <div class="form_pendaftaran">
     <h1>Form Pendaftaran Siswa Baru PPDB Sekolah Inklusi</h1>

@@ -622,3 +622,19 @@ footer li {
 .dashboard_admin h3 {
   color: #1565c0;
 }
+.error { 
+  color: #D8000C; 
+  font-size: 0.9em; 
+  display: block; 
+  margin-top: 5px; 
+}
+        
+.sukses { 
+  color: #4F8A10; 
+  font-weight: bold; 
+  border: 1px solid #4F8A10; 
+  background-color: #DFF2BF; 
+  padding: 10px; 
+  border-radius: 5px; 
+  margin-bottom: 15px; 
+}
