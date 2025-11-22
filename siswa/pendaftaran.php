@@ -49,7 +49,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     val_required($errors, 'no_hp_siswa', $_POST['no_hp_siswa'], 'No HP Siswa wajib diisi.');
     val_numeric($errors, 'no_hp_siswa', $_POST['no_hp_siswa'], 'No HP Siswa harus berupa angka.');
 
-    // val_
+    val_required($errors, 'jurusan', $_POST['jurusan'], 'Jurusan  wajib diisi.');
+
+    val_required($errors, 'kebutuhan', $_POST['kebutuhan'], 'kebutuhan wajib diisi.');
+
 
     if (empty($errors)) {
         $pesan_sukses = "SELAMAT! Semua data yang Anda masukkan VALID.";
@@ -150,6 +153,9 @@ $kebutuhan=kebutuhan();
                 <option value="<?= $data['ID_JURUSAN'] ?>"><?= $data['NAMA_JURUSAN'] ?></option>
                 <?php endforeach; ?>
             </select>
+            <?php if(!empty($errors['jurusan'])): ?>
+            <span class="error"><?= $errors['jurusan'] ?></span>
+            <?php endif; ?>
         </div>
         
         <h2>Kebutuhan Khusus</h2>
@@ -195,8 +201,8 @@ $kebutuhan=kebutuhan();
                 id="pas_foto" 
                 name="ijazah" 
             >
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <?php if(!empty($errors['ijazah'])): ?>
+            <span class="error"><?= $errors['ijazah'] ?></span>
             <?php endif; ?>
         </div>
         
@@ -207,8 +213,8 @@ $kebutuhan=kebutuhan();
                 name="foto" 
                 accept=".jpg, .jpeg, .png" 
             >
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <?php if(!empty($errors['foto'])): ?>
+            <span class="error"><?= $errors['foto'] ?></span>
             <?php endif; ?>
         </div>
         <h2>Data Ayah & Ibu</h2>
@@ -216,21 +222,21 @@ $kebutuhan=kebutuhan();
         <div class="form_isi">
             <label for="nama_wali">Nama Ayah :</label>
             <input type="text" id="nama_wali" name="nama_ayah" placeholder="nama_lengkap_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <?php if(!empty($errors['nama_ayah'])): ?>
+            <span class="error"><?= $errors['nama_ayah'] ?></span>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
                 <label for="">Keadaan Ayah :</label>
                 <div class="radio-group-horizontal">
-                    <input type="radio" id="masih_hidup" name="keadaan" value="masih hidup">
+                    <input type="radio" id="masih_hidup" name="keadaan_ayah" value="masih hidup">
                     <label for="masih hidup">Masih Hidup</label>
                     
-                    <input type="radio" id="sudah_tidak_ada" name="keadaan" value="sta">
+                    <input type="radio" id="sudah_tidak_ada" name="keadaan_ayaha">
                     <label for="sta">Sudah Tidak Ada</label>
-                    <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+                    <?php if(!empty($errors['keadaan'])): ?>
+            <span class="error"><?= $errors['keadaan'] ?></span>
             <?php endif; ?>
                 </div>
         </div>
@@ -238,41 +244,41 @@ $kebutuhan=kebutuhan();
         <div class="form_isi">
             <label for="">Alamat Ayah :</label>
             <input type="text" id="alamat_ayah" name="alamat_ayah" placeholder="alamat_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <?php if(!empty($errors['alamat_ayah'])): ?>
+            <span class="error"><?= $errors['alamat_ayah'] ?></span>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
             <label for="">No Telepon Ayah : </label>
             <input type="text" id="no_hp_ayah" name="no_hp_ayah" placeholder="no_hp_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <?php if(!empty($errors['no_hp_ayah'])): ?>
+            <span class="error"><?= $errors['no_hp_ayah'] ?></span>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
             <label for="">Pekerjaan Ayah</label>
             <input type="text" id="pekerjaan_ayah" name="pekerjaan_ayah" placeholder="pekerjaan_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <?php if(!empty($errors['pekerjaan_ayah'])): ?>
+            <span class="error"><?= $errors['pekerjaan_ayah'] ?></span>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
             <label for="">Gaji Ayah : </label>
             <input type="text" id="gaji_ayah" name="gaji_ayah" placeholder="gaji_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <?php if(!empty($errors['gaji_ayah'])): ?>
+            <span class="error"><?= $errors['gaji_ayah'] ?></span>
             <?php endif; ?>
         </div>
 
 
         <div class="form_isi">
             <label for="nama_wali">Nama Ibu :</label>
-            <input type="text" id="nama_wali" name="keadaan_ibu" placeholder="nama_lengkap_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <input type="text" id="nama_wali" name="nama_ibu" placeholder="nama_lengkap_ibu">
+            <?php if(!empty($errors['nama_ibu'])): ?>
+            <span class="error"><?= $errors['nama_ibu'] ?></span>
             <?php endif; ?>
         </div>
 
@@ -282,43 +288,43 @@ $kebutuhan=kebutuhan();
                     <input type="radio" id="masih_hidup" name="keadaan" value="masih hidup">
                     <label for="masih hidup">Masih Hidup</label>
                     
-                    <input type="radio" id="sudah_tidak_ada" name="keadaan" value="sta">
+                    <input type="radio" id="sudah_tidak_ada" name="keadaan_ibu" value="sta">
                     <label for="sta">Sudah Tidak Ada</label>
-                    <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+                    <?php if(!empty($errors['keadaan_ibu'])): ?>
+            <span class="error"><?= $errors['keadaan_ibu'] ?></span>
             <?php endif; ?>
                 </div>
         </div>
 
         <div class="form_isi">
             <label for="">Alamat Ibu :</label>
-            <input type="text" id="alamat_ayah" name="alamat_ibu" placeholder="alamat_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <input type="text" id="alamat_ibu" name="alamat_ibu" placeholder="alamat_ibu">
+            <?php if(!empty($errors['alamat_ibu'])): ?>
+            <span class="error"><?= $errors['alamat_ibu'] ?></span>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
             <label for="">No Telepon Ibu : </label>
-            <input type="text" id="no_hp_ayah" name="no_hp_ibu" placeholder="no_hp_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <input type="text" id="no_hp_ibu" name="no_hp_ibu" placeholder="no_hp_ibu">
+            <?php if(!empty($errors['no_hp_ibu'])): ?>
+            <span class="error"><?= $errors['no_hp_ibu'] ?></span>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
             <label for="">Pekerjaan Ibu</label>
-            <input type="text" id="pekerjaan_ayah" name="pekerjaan_ibu" placeholder="pekerjaan_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <input type="text" id="pekerjaan_ibu" name="pekerjaan_ibu" placeholder="pekerjaan_ibu">
+            <?php if(!empty($errors['pekerjaan_ibu'])): ?>
+            <span class="error"><?= $errors['pekerjaan_ibu'] ?></span>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
             <label for="">Gaji Ibu : </label>
-            <input type="text" id="gaji_ayah" name="gaji_ibu" placeholder="gaji_ayah">
-            <?php if(!empty($errors['nisn'])): ?>
-            <span class="error"><?= $errors['nisn'] ?></span>
+            <input type="text" id="gaji_ibu" name="gaji_ibu" placeholder="gaji_ibu">
+            <?php if(!empty($errors['gaji_ibu'])): ?>
+            <span class="error"><?= $errors['gaji_ibu'] ?></span>
             <?php endif; ?>
         </div>        
 
