@@ -1,4 +1,5 @@
 <div class="nav">
+<<<<<<< HEAD
     <!-- KIRI: Beranda + dropdown -->
     <ul class="nav-menu">
         <li class="dropdown">
@@ -14,6 +15,8 @@
         </li>
     </ul>
 	<!-- <ul>
+
+	<ul>
 		<li><a href="index.php">Beranda</a></li>
 		<li><a href="#isi">Profil Sekolah</a></li>
 		<li><a href="#vimisi">Visi & Misi</a></li>
