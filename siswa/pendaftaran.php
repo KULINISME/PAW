@@ -1,4 +1,4 @@
-<?php session_start(); if(!isset($_SESSION['login']))
+<?php session_start(); if(!isset($_SESSION['isSiswa']))
 { require_once '../cekLogin.inc';; } require_once "../database.php";
 // require_once "../cekLogin.inc";
 require_once "../includes/header.php";
@@ -12,6 +12,8 @@ $nama = '';
 $nisn = '';
 $password = '';
 $tgl_lahir = '';
+
+// validasi form pendaftaran siswa 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -101,7 +103,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    val_file($errors,'foto',$_FILES['foto'],['jpg', 'jpeg', 'png', 'pdf'],5,'Format file tidak didukung.');
 
     if (empty($errors)) {
-        $pesan_sukses = "SELAMAT! Semua data yang Anda masukkan VALID.";
         proses_pendaftaran($_POST);
         header("Location: siswa/");
     }
@@ -109,8 +110,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $jurusan=jurusan();
 $kebutuhan=kebutuhan();
-
  ?>
+
+<!-- form pendaftaran siswa  -->
 <div class="form_pendaftaran">
     <h1>Form PPDB Sekolah Inklusi</h1>
     <form method="POST" enctype="multipart/form-data" class="isi_pendaftaran">

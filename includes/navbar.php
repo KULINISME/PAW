@@ -20,7 +20,8 @@
 		</a></li>
 		<li><a href="#alur">Alur Pndaftaran Online</a></li>
 		<li><a href="#detail">Detial Pendaftaran</a></li>
-	</ul>
+  </ul>
+
 	<ul>
 		<li><a href="login.php"><button>Login</button></a></li>
 	</ul>
