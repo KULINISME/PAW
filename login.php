@@ -11,36 +11,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $nama = trim($_POST['user']);
     $password = $_POST['pass'];
-
-    if (empty($nama)) {
-        $errors['user'] = "Username wajib diisi.";
-    }
-
-    if (empty($password)) {
-        $errors['pass'] = "Password wajib diisi.";
-    }
-
+    // validasi username dan password
+    val_required($errors, 'user', $nama, 'Username wajib diisi.');
+    val_required($errors, 'pass', $password, 'Password wajib diisi.');
     if (empty($errors)) {
-
         $data = login($nama, $password);
-
         if ($data) {
-
             $_SESSION['login'] = true;
             $_SESSION['ID_USER'] = $data['ID'];
-
             if ($data['ket'] == 0) {
                 $_SESSION['isAdmin'] = true;
                 header("Location: admin/");
                 exit();
-            }
-
-            if ($data['ket'] == 1) {
+            }if ($data['ket'] == 1) {
                 $_SESSION['isSiswa'] = true;
                 header("Location: siswa/");
                 exit();
             }
-
         } else {
             $errors['salah'] = "Username atau Password salah.";
         }
@@ -50,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 require_once 'includes/header.php';
 require_once 'includes/navbar.php';
 ?>
-
+<!-- form login -->
 <div class="login">
 	<form action="" method="POST">
 			<h1>Login</h1>
@@ -62,10 +49,7 @@ require_once 'includes/navbar.php';
                     <td>
                         <input type="text" id="user" name="user" placeholder="Masukkan username" 
                         value="<?php echo htmlspecialchars($nama); ?>">
-
-                        <?php if (!empty($errors['user'])): ?>
-                            <span class="error"><?php echo $errors['user']; ?></span>
-                        <?php endif; ?>
+                        <span class="error"><?= $errors['user'] ?? ""; ?></span>
                     </td>
                 </tr>
 
@@ -76,13 +60,8 @@ require_once 'includes/navbar.php';
                     <td>
                         <input type="password" id="pass" name="pass" placeholder="Password terdiri dari 8 karakter"
                         value="<?php echo htmlspecialchars($password); ?>">
-
-                        <?php if (!empty($errors['pass'])): ?>
-                            <span class="error"><?php echo $errors['pass']; ?></span>
-                        <?php endif; ?>
-                        <?php if (!empty($errors['salah'])): ?>
-                            <span class="error"><?php echo $errors['salah']; ?></span>
-                        <?php endif; ?>
+                        <span class="error"><?= $errors['pass'] ?? ""; ?></span>
+                        <span class="error"><?= $errors['salah'] ?? ""; ?></span>
                     </td>
                 </tr>
 

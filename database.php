@@ -10,7 +10,7 @@ try {
 } catch (PDOException $e) {
     echo 'koneksi gagal'.$e->getMessage();
 };
-
+// register function
 function register(array $data){   
     global $pdo; 
     $stmnt=$pdo->prepare("INSERT INTO siswa (USERNAME_SISWA,PASSWORD_SISWA,`EMAIL`)VALUES (:USERNAME,:PASSWORD,:EMAIL)");
@@ -20,6 +20,7 @@ function register(array $data){
         ':EMAIL'=>$data['email']
     ]);
 }
+// fungsi jumlah pendaftar
 function siswa_daftar(){
     global $pdo;
     $stmnt=$pdo->prepare("SELECT ID_PENDAFTARAN FROM pendaftaran");
@@ -27,7 +28,7 @@ function siswa_daftar(){
     $daftar=$stmnt->fetchAll();
     return $daftar;
 }
-
+// data pendaftar
 function pendaftar(){
     global $pdo;
     $stmnt=$pdo->prepare
@@ -44,6 +45,7 @@ function pendaftar(){
     $daftar=$stmnt->fetchAll();
     return $daftar;
 }
+// fungsi lulus
 function lulus(){
     global $pdo;
     $stmnt=$pdo->prepare
@@ -60,6 +62,7 @@ function lulus(){
     $daftar=$stmnt->fetchAll();
     return $daftar;
 }
+// fungsi gagal
 function gagal(){
     global $pdo;
     $stmnt=$pdo->prepare
@@ -76,6 +79,7 @@ function gagal(){
     $daftar=$stmnt->fetchAll();
     return $daftar;
 }
+// fungsi siswa per jurusan
 function siswa_jurusan($jurusan){
     global $pdo;
     $stmnt=$pdo->prepare("SELECT ID_PENDAFTARAN 
@@ -91,6 +95,7 @@ function siswa_jurusan($jurusan){
     $daftar=$stmnt->fetchAll();
     return $daftar;
 }
+// fungsi edit kuota
 function edit_kuota($id){
     global $pdo;
     $stmnt=$pdo->prepare("UPDATE jurusan SET KUOTA_JURUSAN = :KUOTA_JURUSAN WHERE ID_JURUSAN = :id");
@@ -100,6 +105,7 @@ function edit_kuota($id){
     ]);
     header("Location:jurusan.php");
 }
+// fungsi menampilkan jurusan
 function jurusan(){
     global $pdo;
     $stmnt=$pdo->prepare("SELECT * FROM jurusan");
@@ -107,6 +113,7 @@ function jurusan(){
     $jurusan=$stmnt->fetchAll();
     return $jurusan;
 }
+// fungsi menampilkan kebutuhan
 function kebutuhan(){
     global $pdo;
     $stmnt=$pdo->prepare("SELECT * FROM kebutuhan");
@@ -114,6 +121,7 @@ function kebutuhan(){
     $kebutuhan=$stmnt->fetchAll();
     return $kebutuhan;
 }
+// fungsi mendapatkan last insert id pendaftraan
 function lastInsertId(){
     global $pdo;
     $stmnt=$pdo->prepare("SELECT ID_PENDAFTARAN FROM pendaftaran ORDER BY ID_PENDAFTARAN DESC LIMIT 1");
@@ -121,6 +129,7 @@ function lastInsertId(){
     $id=$stmnt->fetch();
     return $id;
 }
+// fungsi login
 function login($user,$pass){
     global $pdo;
     $stmnt=$pdo->prepare
@@ -137,26 +146,7 @@ function login($user,$pass){
     $data=$stmnt->fetch();
     return $data;
 }
-// function register(array $data){
-
-//     $stmnt=$pdo
-// }
-
-// Profil Siswa
-function profil($id) {
-    global $pdo;
-    $stmnt=$pdo->prepare
-    ("SELECT*
-    FROM akun_siswa
-    WHERE ID_AKUN_SISWA = :id
-    ");
-    $stmnt->execute([
-        ':id'=>$id
-    ]);
-    $profil=$stmnt->fetch();
-    return $profil;
-}
-
+// fungsi proses pendaftaran
 function proses_pendaftaran( array $data){
     $lastIdPendaftar=lastInsertId();
     if($_SERVER["REQUEST_METHOD"]=="POST"){
