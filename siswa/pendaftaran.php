@@ -25,22 +25,23 @@ $id_jurusan = htmlspecialchars( $_POST['id_jurusan'] ?? '');
 $no_hp_siswa = htmlspecialchars( $_POST['no_hp_siswa'] ?? '');
 $kebutuhan = htmlspecialchars( $_POST['kebutuhan'] ?? '');
 
+$nama_ayah = htmlspecialchars( $_POST['nama_ayah'] ?? '');
+$keadaan_ayah = htmlspecialchars( $_POST['keadaan_ayah'] ?? '');
+$alamat_ayah = htmlspecialchars( $_POST['alamat_ayah'] ?? '');
+$no_hp_ayah = htmlspecialchars( $_POST['no_hp_ayah'] ?? '');
+$pekerjaan_ayah = htmlspecialchars( $_POST['pekerjaan_ayah'] ?? '');
+$gaji_ayah = htmlspecialchars( $_POST['gaji_ayah'] ?? '');
+
+$nama_ibu = htmlspecialchars( $_POST['nama_ibu'] ?? '');
+$keadaan_ibu = htmlspecialchars( $_POST['keadaan_ibu'] ?? '');
+$alamat_ibu = htmlspecialchars( $_POST['alamat_ibu'] ?? '');
+$no_hp_ibu = htmlspecialchars( $_POST['no_hp_ibu'] ?? '');
+$pekerjaan_ibu = htmlspecialchars( $_POST['pekerjaan_ibu'] ?? '');
+$gaji_ibu = htmlspecialchars( $_POST['gaji_ibu'] ?? '');
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    $nama_ayah = htmlspecialchars( $_POST['nama_ayah'] ?? '');
-    $keadaan_ayah = htmlspecialchars( $_POST['keadaan_ayah'] ?? '');
-    $alamat_ayah = htmlspecialchars( $_POST['alamat_ayah'] ?? '');
-    $no_hp_ayah = htmlspecialchars( $_POST['no_hp_ayah'] ?? '');
-    $pekerjaan_ayah = htmlspecialchars( $_POST['pekerjaan_ayah'] ?? '');
-    $gaji_ayah = htmlspecialchars( $_POST['gaji_ayah'] ?? '');
-
-    $nama_ibu = htmlspecialchars( $_POST['nama_ibu'] ?? '');
-    $keadaan_ibu = htmlspecialchars( $_POST['keadaan_ibu'] ?? '');
-    $alamat_ibu = htmlspecialchars( $_POST['alamat_ibu'] ?? '');
-    $no_hp_ibu = htmlspecialchars( $_POST['no_hp_ibu'] ?? '');
-    $pekerjaan_ibu = htmlspecialchars( $_POST['pekerjaan_ibu'] ?? '');
-    $gaji_ibu = htmlspecialchars( $_POST['gaji_ibu'] ?? '');
 
     $file_kk = $_FILES['kk']['name'] ?? null;
     $file_akte = $_FILES['akte']['name'] ?? null;
