@@ -18,7 +18,7 @@ function val_alpha(&$errors, $field_name, $value, $message) {
 }
 
 function val_alphanumeric(&$errors, $field_name, $value, $message) {
-    if (!empty(trim($value)) && !preg_match("/^[a-zA-Z0-9\.\,]+$/",$value)) {
+    if (!empty(trim($value)) && !preg_match("/^[a-zA-Z0-9 \.\,]+$/",$value)) {
         $errors[$field_name] = $message;
     }
 }

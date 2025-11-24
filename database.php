@@ -116,7 +116,7 @@ function jurusan(){
 // fungsi menampilkan kebutuhan
 function kebutuhan(){
     global $pdo;
-    $stmnt=$pdo->prepare("SELECT * FROM kebutuhan");
+    $stmnt=$pdo->prepare("SELECT * FROM kebutuhan WHERE NAMA_KEBUTUHAN != 'Tidak Ada'");
     $stmnt->execute();
     $kebutuhan=$stmnt->fetchAll();
     return $kebutuhan;
@@ -148,32 +148,32 @@ function login($user,$pass){
 }
 // fungsi proses pendaftaran
 function proses_pendaftaran( array $data){
-    $lastIdPendaftar=lastInsertId();
+    global $pdo;
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $kk=$_FILES['kk'];
         $name_kk=$kk['name'];
         $tmp_kk=$kk['tmp_name'];
         $tujuan_kk="../kk/".$name_kk;
         move_uploaded_file($tmp_kk,$tujuan_kk);
-
-        $akta=$_FILES['akta'];
+        
+        $akta=$_FILES['akte'];
         $name_akta=$akta['name'];
         $tmp_akta=$akta['tmp_name'];
         $tujuan_akta="../akta/".$name_akta;
         move_uploaded_file($tmp_akta,$tujuan_akta);
-
+        
         $ijazah=$_FILES['ijazah'];
         $name_ijazah=$ijazah['name'];
         $tmp_ijazah=$ijazah['tmp_name'];
         $tujuan_ijazah="../ijazah/".$name_ijazah;
         move_uploaded_file($tmp_ijazah,$tujuan_ijazah);
-
+        
         $foto=$_FILES['foto'];
         $name_foto=$foto['name'];
         $tmp_foto=$foto['tmp_name'];
         $tujuan_foto="../foto_pas/".$name_foto;
         move_uploaded_file($tmp_foto,$tujuan_foto);
-
+        
         $stmnt=$pdo->prepare
         ("INSERT INTO 
         pendaftaran (ID_STATUS,ID_JURUSAN,ID_SISWA,NAMA_LENGKAP,KARTU_KELUARGA,AKTA_KELAHIRAN,IJAZAH,GENDER,ALAMAT_SISWA,TEMPAT_LAHIR,TANGGAL_LAHIR,AGAMA,FOTO_SISWA,NO_HP_SISWA,NAMA_AYAH,KEADAAN_AYAH,ALAMAT_AYAH,NO_HP_AYAH,PEKERJAAN_AYAH,GAJI_AYAH,NAMA_IBU,KEADAAN_IBU,ALAMAT_IBU,NO_HP_IBU,PEKERJAAN_IBU,GAJI_IBU)
@@ -182,9 +182,8 @@ function proses_pendaftaran( array $data){
         $stmnt->execute([
             ':ID_STATUS'=>1,
             ':ID_JURUSAN'=>$_POST['id_jurusan'],
-            ':ID_AKUN_SISWA'=> $_POST['id_akun'],
             ':ID_SISWA'=> $_POST['id_akun'],
-            ':NAMA_LENGKAP'=> $_POST['nama_lengkap'],
+            ':NAMA_LENGKAP'=> $_POST['nama_siswa'],
             ':KARTU_KELUARGA'=>$name_kk,
             ':AKTA_KELAHIRAN'=>$name_akta,
             ':IJAZAH'=>$name_ijazah,
@@ -195,13 +194,6 @@ function proses_pendaftaran( array $data){
             ':AGAMA'=>$_POST['agama'],
             ':FOTO_SISWA'=>$name_foto,
             ':NO_HP_SISWA'=>$_POST['no_hp_siswa'],
-            ':NAMA_WALI'=>$_POST['nama_wali'],
-            ':ALAMAT_WALI'=>$_POST['alamat_wali'],
-            ':NO_HP_WALI'=>$_POST['no_hp_wali'],
-            ':HUBUNGAN'=>$_POST['hubungan'],
-            ':PEKERJAAN_WALI'=>$_POST['pekerjaan_wali'],
-            ':SLIP_GAJI'=>$_POST['slip_gaji'],
-
             ':NAMA_AYAH'=>$_POST['nama_ayah'],
             ':KEADAAN_AYAH'=>$_POST['keadaan_ayah'],
             ':ALAMAT_AYAH'=>$_POST['alamat_ayah'],
@@ -215,12 +207,13 @@ function proses_pendaftaran( array $data){
             ':PEKERJAAN_IBU'=>$_POST['pekerjaan_ibu'],
             ':GAJI_IBU'=>$_POST['gaji_ibu']
         ]);
+        $lastIdPendaftar=lastInsertId();
         $stmnt2=$pdo->prepare
         ("INSERT INTO kebutuhan_pendaftaran (ID_PENDAFTARAN,ID_KEBUTUHAN) 
         VALUES (:ID_PENDAFTARAN,:ID_KEBUTUHAN)");
         $stmnt2->execute([
             ':ID_PENDAFTARAN'=>$lastIdPendaftar['ID_PENDAFTARAN'],
-            ':ID_KEBUTUHAN'=>$_POST['kebutuhan']
+            ':ID_KEBUTUHAN'=>isset($_POST['kebutuhan']) ? $_POST['kebutuhan'] : "1"
         ]);
     }
 }
