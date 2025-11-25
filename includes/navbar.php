@@ -9,7 +9,7 @@
   </ul>
 
 	<ul>
-		<li><a href="login.php"><button>Login</button></a></li>
+		<li><a href="login.php" class="btn_a">Login</a></li>
 	</ul>
 </div>
 </header>

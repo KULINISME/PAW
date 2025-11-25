@@ -25,7 +25,7 @@
         </ul>
     </div>
 	<ul>
-		<li><a href="../siswa/profil_siswa.php"><button>Profil</button></a></li>
+		<li><a href="../siswa/profil_siswa.php" class="btn_a">Profil</a></li>
 	</ul>
 </div>
 </header>

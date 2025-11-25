@@ -25,10 +25,10 @@ $daftar=pendaftar();
                 <td><?=$row['NAMA_KEBUTUHAN']?></td>
                 <td><?=$row['KET_STATUS']?></td>
                 <td>
-                    <a href="edit_status.php?ID_PENDAFTARAN=<?=$row['ID_PENDAFTARAN']?>&kondisi=lulus">
+                    <a href="edit_status.php?ID_PENDAFTARAN=<?=$row['ID_PENDAFTARAN']?>&kondisi=lulus" class="btn_a">
                             Lulus
                     </a>
-                    <a href="edit_status.php?ID_PENDAFTARAN=<?=$row['ID_PENDAFTARAN']?>&kondisi=gagal">
+                    <a href="edit_status.php?ID_PENDAFTARAN=<?=$row['ID_PENDAFTARAN']?>&kondisi=gagal" class="btn_a hapus">
                             Tidak Lulus
                     </a>
                 </td>
