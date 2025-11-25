@@ -4,7 +4,18 @@ require_once '../includes/header.php';
 require_once '../includes/navbarAdmin.php';
     $id=$_GET["ID_JURUSAN"];
     $kuota=$_GET["KUOTA_JURUSAN"];
+    $errors=[];
     if ($_SERVER["REQUEST_METHOD"]=="POST") {
+        val_required($errors,"kuota",$_POST["KUOTA_JURUSAN"],"Kuota wajib diisi.");
+        val_numeric($errors,"kuota",$_POST["KUOTA_JURUSAN"],"Kuota harus berupa angka.");
+        if(empty($errors)){
+            $stmnt=$pdo->prepare("UPDATE jurusan SET KUOTA_JURUSAN=:KUOTA_JURUSAN WHERE ID_JURUSAN=:ID_JURUSAN");
+            $stmnt->execute([
+                ":KUOTA_JURUSAN"=> $_POST["KUOTA_JURUSAN"],
+                ":ID_JURUSAN"=> $id
+            ]);
+            header("Location:jurusan.php");
+        }
         edit_kuota($id);
     }
 ?>

@@ -9,6 +9,7 @@
         val_required($errors,"kode_k",$_POST["kode_kebutuhan"],"Kode kebutuhan wajib diisi.");
         val_numeric($errors,"kode_k",$_POST["kode_kebutuhan"],"Kode kebutuhan harus berupa angka.");
         val_required($errors,"nama_k",$_POST["nama_kebutuhan"],"Nama kebutuhan wajib diisi.");
+        val_alphanumeric($errors,"nama_k",$_POST["nama_kebutuhan"],"Nama kebutuhan harus berupa huruf dan angka.");
         if(empty($errors)){
             $stmnt=$pdo->prepare("INSERT INTO kebutuhan VALUES (:KODE_KEBUTUHAN,:NAMA_KEBUTUHAN)");
             $stmnt->execute([

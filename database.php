@@ -142,7 +142,6 @@ function login($user,$pass){
         ':user'=>$user,
         ':pass'=>md5($pass)
     ]);
-    $_SESSION['login']=true;
     $data=$stmnt->fetch();
     return $data;
 }
