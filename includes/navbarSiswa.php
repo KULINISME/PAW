@@ -1,7 +1,7 @@
 <div class="nav">
     <div>
+        <div class="nav_menu">
         <ul class="nav-menu">
-            <div class="nav_menu">
             <li class="dropdown">
                 <a href="../siswa/index.php" class="nav-link">Beranda <span class="dropdown-logo">▾</span></a>
                 <ul class="dropdown-content">
@@ -11,8 +11,8 @@
                     <li><a href="#detail">Detail Pendaftaran</a></li>
                 </ul>
             </li>
-            </div>    
         </ul>
+        </div>  
         <ul class="nav-menu">
             <li class="dropdown">
             <a href="../siswa/index.php" class="nav-link">Dashboard Siswa ▾</a>
