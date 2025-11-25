@@ -143,6 +143,7 @@ function login($user,$pass){
         ':pass'=>md5($pass)
     ]);
     $data=$stmnt->fetch();
+    $_SESSION['login']=true;
     return $data;
 }
 // fungsi proses pendaftaran
