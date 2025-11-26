@@ -9,6 +9,6 @@
   </ul>
 
 	<ul>
-		<li><a href="login.php"><button>Login</button></a></li>
+		<li><a href="../login.php"><button>Login</button></a></li>
 	</ul>
 </div>

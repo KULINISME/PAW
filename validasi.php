@@ -1,22 +1,23 @@
 <?php
+// function untuk check tiap inputan agar tidak kosong
 function val_required(&$errors, $field_name, $value, $message) {
     if (empty(trim($value))) {
         $errors[$field_name] = $message;
     }
 }
-
+// function untuk check tiap inputan agar inputan hanya menerima numeric
 function val_numeric(&$errors, $field_name, $value, $message) {
     if (!empty(trim($value)) && !is_numeric($value)) {
         $errors[$field_name] = $message;
     }
 }
-
+// function untuk check tiap inputan agar inputan hanya menerima alphabet
 function val_alpha(&$errors, $field_name, $value, $message) {
     if (!empty(trim($value)) && !preg_match("/^[a-zA-Z ]*$/", $value)) {
         $errors[$field_name] = $message;
     }
 }
-
+// function untuk check tiap inputan agar inputan hanya menerima alphanumeric
 function val_alphanumeric(&$errors, $field_name, $value, $message) {
     if (!empty(trim($value)) && !preg_match("/^[a-zA-Z0-9 \.\,]+$/",$value)) {
         $errors[$field_name] = $message;
@@ -43,7 +44,7 @@ function val_date_format(&$errors, $field_name, $value, $format, $message) {
         }
     }
 }
-
+// function untuk check tiap inputan agar inputan hanya menerima inputan type email
 function val_email(&$errors, $field_name, $value, $message) {
     $pattern = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
     if (!empty(trim($value)) && !preg_match($pattern, $value)) {

@@ -12,6 +12,22 @@ $nama = '';
 $nisn = '';
 $password = '';
 $tgl_lahir = '';
+$history_kk= '';
+$history_akte= '';
+$history_ijazah= '';
+$history_foto= '';
+ if (!empty($_FILES['kk']['name'])) {
+        $history_kk = $_FILES['kk']['name'];
+    }
+if (!empty($_FILES['akte']['name'])) {
+        $history_akte = $_FILES['akte']['name'];
+    }
+ if (!empty($_FILES['ijazah']['name'])) {
+        $history_ijazah = $_FILES['ijazah']['name'];
+    }
+if (!empty($_FILES['foto']['name'])) {
+        $history_pas = $_FILES['foto']['name'];
+    }
 
 // validasi form pendaftaran siswa 
 $nama_siswa = htmlspecialchars( $_POST['nama_siswa'] ?? '');
@@ -23,7 +39,7 @@ $tempat_lahir = htmlspecialchars( $_POST['tempat_lahir'] ?? '');
 $alamat_siswa = htmlspecialchars( $_POST['alamat_siswa'] ?? '');
 $id_jurusan = htmlspecialchars( $_POST['id_jurusan'] ?? '');
 $no_hp_siswa = htmlspecialchars( $_POST['no_hp_siswa'] ?? '');
-$kebutuhan = htmlspecialchars( $_POST['kebutuhan'] ?? '');
+$kebutuhan = $_POST['kebutuhan'] ?? [];
 
 $nama_ayah = htmlspecialchars( $_POST['nama_ayah'] ?? '');
 $keadaan_ayah = htmlspecialchars( $_POST['keadaan_ayah'] ?? '');
@@ -37,10 +53,9 @@ $keadaan_ibu = htmlspecialchars( $_POST['keadaan_ibu'] ?? '');
 $alamat_ibu = htmlspecialchars( $_POST['alamat_ibu'] ?? '');
 $no_hp_ibu = htmlspecialchars( $_POST['no_hp_ibu'] ?? '');
 $pekerjaan_ibu = htmlspecialchars( $_POST['pekerjaan_ibu'] ?? '');
-$gaji_ibu = htmlspecialchars( $_POST['gaji_ibu'] ?? '');
+$gaji_ayah = htmlspecialchars( $_POST['gaji_ayah'] ?? '');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
 
 
     $file_kk = $_FILES['kk']['name'] ?? null;
@@ -92,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     val_file($errors,'ijazah',$_FILES['ijazah'],['jpg', 'jpeg', 'png', 'pdf'],2,'Format file tidak didukung.');
 
-   val_file($errors,'foto',$_FILES['foto'],['jpg', 'jpeg', 'png', 'pdf'],5,'Format file tidak didukung.');
+   val_file($errors,'foto',$_FILES['foto'],['jpg', 'jpeg', 'png', 'pdf'],2,'Format file tidak didukung.');
 
     if (empty($errors)) {
         proses_pendaftaran($_POST);
@@ -114,8 +129,10 @@ $kebutuhan=kebutuhan();
         <div>
             <input type="hidden" value="<?= $_SESSION['ID_USER'] ?>" name="id_akun">
         </div>
+        
 
         <div class="form_isi">
+            <span class="wajib">( * ) Wajib diisi</span>
             <label for="nisn">NISN : <span class="wajib">*</span></label>
             <input type="text" id="nisn" name="nisn" placeholder="NISN" value="<?= $nisn?>">
             <?php if(!empty($errors['nisn'])): ?>
@@ -134,10 +151,10 @@ $kebutuhan=kebutuhan();
         <div class="form_isi">
             <label>Jenis Kelamin : <span class="wajib">*</span></label>
             <div class="radio-group-horizontal">
-                <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-Laki">
+                <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-Laki" <?= (isset($_POST['jenis_kelamin']) && $_POST['jenis_kelamin'] === 'Laki-Laki') ? 'checked' : '' ?>>
                 <label for="laki-laki">Laki-laki</label>
                 
-                <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan">
+                <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" <?= (isset($_POST['jenis_kelamin']) && $_POST['jenis_kelamin'] === 'Perempuan') ? 'checked' : '' ?>>
                 <label for="perempuan">Perempuan</label>
             </div>
             <?php if(!empty($errors['jenis_kelamin'])): ?>
@@ -201,50 +218,71 @@ $kebutuhan=kebutuhan();
         <h2>Kebutuhan Khusus</h2>
         <hr>
         <div class="form_isi">
-             <label for="kebutuhan">Masukan Jika Siswa Memiliki Kebutuhan Khusus : </label>
-            <div class="kebutuhan">
-                <?php foreach($kebutuhan as $kbth): ?>
-                    <div>
-                        <input type="checkbox" id="<?= $kbth['ID_KEBUTUHAN'] ?>" name="kebutuhan" value="<?= $kbth['ID_KEBUTUHAN'] ?>"><span> <?= $kbth['NAMA_KEBUTUHAN'] ?></span> 
-                    </div>
-                <?php endforeach; ?>
-                <?php if(!empty($errors['kebutuhan'])): ?>
-            <span class="error"><?= $errors['kebutuhan'] ?></span>
-            <?php endif; ?>
+    <label for="kebutuhan">Masukan Jika Siswa Memiliki Kebutuhan Khusus : </label>
+
+    <div class="kebutuhan">
+        <?php foreach ($kebutuhan as $kbth): ?>
+            <div>
+                <input type="checkbox"
+                    id="<?= $kbth['ID_KEBUTUHAN'] ?>"
+                    name="kebutuhan[]"
+                    value="<?= $kbth['ID_KEBUTUHAN'] ?>"
+                    <?= in_array($kbth['ID_KEBUTUHAN'], $kebutuhan) ? 'checked' : '' ?>
+                >
+                <span><?= $kbth['NAMA_KEBUTUHAN'] ?></span>
             </div>
-        </div>
+        <?php endforeach; ?>
+
+        <?php if (!empty($errors['kebutuhan'])): ?>
+            <span class="error"><?= $errors['kebutuhan'] ?></span>
+        <?php endif; ?>
+
+    </div>
+</div>
         <h2>Data Dokumen</h2>
         <hr>
         
         <div class="form_isi">
-            <label for="kk" >Kartu Keluarga : <span class="wajib">*</span></label>
+            <label for="kk" >Kartu Keluarga : (Max file 2 mb jpg,jpeg,png, dan pdf)<span class="wajib">*</span></label>
             <input type="file" id="pas_foto" name="kk">
             <?php if(!empty($errors['kk'])): ?>
-            <span class="error"><?= $errors['kk'] ?></span>
+                <span class="error"><?= $errors['kk'] ?></span>
+            <?php endif; ?>
+            <?php if (!empty($history_kk)): ?>
+                <p>Dipilih: <b><?= htmlspecialchars($history_kk) ?></b></p>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
-            <label for="akta">Akte Kelahiran : <span class="wajib">*</span></label>
+            <label for="akta">Akte Kelahiran : (Max file 2 mb jpg,jpeg,png, dan pdf) <span class="wajib">*</span></label>
             <input type="file" id="pas_foto" name="akte">
             <?php if(!empty($errors['akte'])): ?>
-            <span class="error"><?= $errors['akte'] ?></span>
+                <span class="error"><?= $errors['akte'] ?></span>
+            <?php endif; ?>
+            <?php if (!empty($history_akte)): ?>
+                <p>Dipilih: <b><?= htmlspecialchars($history_akte) ?></b></p>
             <?php endif; ?>
         </div>
 
         <div class="form_isi">
-            <label for="ijazah">Ijazah / SKL (Surat keterangan Lulus) : <span class="wajib">*</span></label>
+            <label for="ijazah">Ijazah / SKL (Surat keterangan Lulus) : (Max file 2 mb jpg,jpeg,png, dan pdf) <span class="wajib">*</span></label>
             <input type="file" id="pas_foto" name="ijazah">
             <?php if(!empty($errors['ijazah'])): ?>
             <span class="error"><?= $errors['ijazah'] ?></span>
             <?php endif; ?>
+              <?php if (!empty($history_ijazah)): ?>
+                <p>Dipilih: <b><?= htmlspecialchars($history_ijazah) ?></b></p>
+            <?php endif; ?>
         </div>
         
         <div class="form_isi">
-            <label for="pas_foto">Foto Pas Siswa (Upload) : (Max ukuran file 5 mb jpg,jpeg,png.) <span class="wajib">*</span></label>
+            <label for="pas_foto">Foto Pas Siswa (Upload) : (Max ukuran file 2 mb jpg,jpeg,png.) <span class="wajib">*</span></label>
             <input type="file" id="pas_foto" name="foto" accept=".jpg, .jpeg, .png">
             <?php if(!empty($errors['foto'])): ?>
             <span class="error"><?= $errors['foto'] ?></span>
+            <?php endif; ?>
+              <?php if (!empty($history_foto)): ?>
+                <p>Dipilih: <b><?= htmlspecialchars($history_foto) ?></b></p>
             <?php endif; ?>
         </div>
         <h2>Data Ayah & Ibu</h2>
@@ -260,10 +298,10 @@ $kebutuhan=kebutuhan();
         <div class="form_isi">
                 <label for="">Keadaan Ayah : <span class="wajib">*</span></label>
                 <div class="radio-group-horizontal">
-                    <input type="radio" id="masih_hidup" name="keadaan_ayah" value="masih hidup">
+                    <input type="radio" id="masih_hidup" name="keadaan_ayah" value="masih hidup" <?= (isset($_POST['keadaan_ayah']) && $_POST['keadaan_ayah'] === 'masih hidup') ? 'checked' : '' ?>>
                     <label for="masih hidup">Masih Hidup</label>
                     
-                    <input type="radio" id="sudah_tidak_ada" name="keadaan_ayah" value="meniggal">
+                    <input type="radio" id="sudah_tidak_ada" name="keadaan_ayah" value="meninggal" <?= (isset($_POST['keadaan_ayah']) && $_POST['keadaan_ayah'] === 'meninggal') ? 'checked' : '' ?>>
                     <label for="sta">Sudah Tidak Ada</label>
                     <?php if(!empty($errors['keadaan_ayah'])): ?>
                     <span class="error"><?= $errors['keadaan_ayah'] ?></span>
@@ -290,20 +328,20 @@ $kebutuhan=kebutuhan();
             <label for="">Gaji Ayah :</label>
             <select name="gaji_ayah" id="gaji_ayah">
                 <option value="kosong">-- Pilih Gaji Ayah --</option>
-                <option value="1">-- Kurang Dari Rp 500.000 --</option>
-                <option value="2">-- Rp 500.001 Sampai Rp 1.000.000 --</option>
-                <option value="3">-- Rp 1.000.001 Sampai Rp 1.500.000 --</option>
-                <option value="4">-- Rp 1.500.001 Sampai Rp 2.000.000 --</option>
-                <option value="5">-- Rp 2.000.001 Sampai Rp 2.500.000 --</option>
-                <option value="6">-- Rp 2.500.001 Sampai Rp 3.000.000 --</option>
-                <option value="7">-- Rp 3.000.001 Sampai Rp 3.500.000 --</option>
-                <option value="8">-- Rp 3.500.001 Sampai Rp 4.000.000 --</option>
-                <option value="9">-- Rp 4.000.001 Sampai Rp 4.500.000 --</option>
-                <option value="10">-- Rp 4.500.001 Sampai Rp 5.000.000 --</option>
-                <option value="11">-- Rp 5.000.001 Sampai Rp 5.500.000 --</option>
-                <option value="12">-- Rp 5.500.001 Sampai Rp 6.000.000 --</option>
-                <option value="13">-- Rp 6.000.001 Sampai Rp 6.500.000 --</option>
-                <option value="14">-- Rp 6.500.001 Sampai Rp 7.000.000 --</option>
+                <option value="1" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '1') ? 'selected' : '' ?>>-- Kurang Dari Rp 500.000 --</option>
+                <option value="2" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '2') ? 'selected' : '' ?>>-- Rp 500.001 Sampai Rp 1.000.000 --</option>
+                <option value="3" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '3') ? 'selected' : '' ?>>-- Rp 1.000.001 Sampai Rp 1.500.000 --</option>
+                <option value="4" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '4') ? 'selected' : '' ?>>-- Rp 1.500.001 Sampai Rp 2.000.000 --</option>
+                <option value="5" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '5') ? 'selected' : '' ?>>-- Rp 2.000.001 Sampai Rp 2.500.000 --</option>
+                <option value="6" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '6') ? 'selected' : '' ?>>-- Rp 2.500.001 Sampai Rp 3.000.000 --</option>
+                <option value="7" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '7') ? 'selected' : '' ?>>-- Rp 3.000.001 Sampai Rp 3.500.000 --</option>
+                <option value="8" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '8') ? 'selected' : '' ?>>-- Rp 3.500.001 Sampai Rp 4.000.000 --</option>
+                <option value="9" <?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '9') ? 'selected' : '' ?>>-- Rp 4.000.001 Sampai Rp 4.500.000 --</option>
+                <option value="10"<?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '10') ? 'selected' : '' ?>>-- Rp 4.500.001 Sampai Rp 5.000.000 --</option>
+                <option value="11"<?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '11') ? 'selected' : '' ?>>-- Rp 5.000.001 Sampai Rp 5.500.000 --</option>
+                <option value="12"<?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '12') ? 'selected' : '' ?>>-- Rp 5.500.001 Sampai Rp 6.000.000 --</option>
+                <option value="13"<?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '13') ? 'selected' : '' ?>>-- Rp 6.000.001 Sampai Rp 6.500.000 --</option>
+                <option value="14"<?= (isset($_POST['gaji_ayah']) && $_POST['gaji_ayah'] == '14') ? 'selected' : '' ?>>-- Rp 6.500.001 Sampai Rp 7.000.000 --</option>
             </select>
         </div>
 
@@ -319,9 +357,10 @@ $kebutuhan=kebutuhan();
         <div class="form_isi">
             <label for="">Keadaan Ibu : <span class="wajib">*</span></label>
                 <div class="radio-group-horizontal">
-                    <input type="radio" id="masih_hidup" name="keadaan_ibu" value="masih hidup">
+                    <input type="radio" id="masih_hidup" name="keadaan_ibu" value="masih hidup" <?= (isset($_POST['keadaan_ibu']) && $_POST['keadaan_ibu'] === 'masih hidup') ? 'checked' : '' ?>>
                     <label for="masih hidup">Masih Hidup</label>
-                    <input type="radio" id="sudah_tidak_ada" name="keadaan_ibu" value="meniggal">
+
+                    <input type="radio" id="sudah_tidak_ada" name="keadaan_ibu" value="meninggal" <?= (isset($_POST['keadaan_ibu']) && $_POST['keadaan_ibu'] === 'meninggal') ? 'checked' : '' ?>>
                     <label for="sta">Sudah Tidak Ada</label>
                     <?php if(!empty($errors['keadaan_ibu'])): ?>
                     <span class="error"><?= $errors['keadaan_ibu'] ?></span>
@@ -348,25 +387,23 @@ $kebutuhan=kebutuhan();
             <label for="">Gaji Ibu : </label>
             <select name="gaji_ibu" id="gaji_ibu">
                 <option value="kosong">-- Pilih Gaji Ibu --</option>
-                <option value="1">-- Kurang Dari Rp 500.000 --</option>
-                <option value="2">-- Rp 500.001 Sampai Rp 1.000.000 --</option>
-                <option value="3">-- Rp 1.000.001 Sampai Rp 1.500.000 --</option>
-                <option value="4">-- Rp 1.500.001 Sampai Rp 2.000.000 --</option>
-                <option value="5">-- Rp 2.000.001 Sampai Rp 2.500.000 --</option>
-                <option value="6">-- Rp 2.500.001 Sampai Rp 3.000.000 --</option>
-                <option value="7">-- Rp 3.000.001 Sampai Rp 3.500.000 --</option>
-                <option value="8">-- Rp 3.500.001 Sampai Rp 4.000.000 --</option>
-                <option value="9">-- Rp 4.000.001 Sampai Rp 4.500.000 --</option>
-                <option value="10">-- Rp 4.500.001 Sampai Rp 5.000.000 --</option>
-                <option value="11">-- Rp 5.000.001 Sampai Rp 5.500.000 --</option>
-                <option value="12">-- Rp 5.500.001 Sampai Rp 6.000.000 --</option>
-                <option value="13">-- Rp 6.000.001 Sampai Rp 6.500.000 --</option>
-                <option value="14">-- Rp 6.500.001 Sampai Rp 7.000.000 --</option>
+                <option value="1" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '1') ? 'selected' : '' ?>>-- Kurang Dari Rp 500.000 --</option>
+                <option value="2" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '2') ? 'selected' : '' ?>>-- Rp 500.001 Sampai Rp 1.000.000 --</option>
+                <option value="3" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '3') ? 'selected' : '' ?>>-- Rp 1.000.001 Sampai Rp 1.500.000 --</option>
+                <option value="4" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '4') ? 'selected' : '' ?>>-- Rp 1.500.001 Sampai Rp 2.000.000 --</option>
+                <option value="5" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '5') ? 'selected' : '' ?>>-- Rp 2.000.001 Sampai Rp 2.500.000 --</option>
+                <option value="6" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '6') ? 'selected' : '' ?>>-- Rp 2.500.001 Sampai Rp 3.000.000 --</option>
+                <option value="7" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '7') ? 'selected' : '' ?>>-- Rp 3.000.001 Sampai Rp 3.500.000 --</option>
+                <option value="8" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '8') ? 'selected' : '' ?>>-- Rp 3.500.001 Sampai Rp 4.000.000 --</option>
+                <option value="9" <?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '9') ? 'selected' : '' ?>>-- Rp 4.000.001 Sampai Rp 4.500.000 --</option>
+                <option value="10"<?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '10') ? 'selected' : '' ?>>-- Rp 4.500.001 Sampai Rp 5.000.000 --</option>
+                <option value="11"<?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '11') ? 'selected' : '' ?>>-- Rp 5.000.001 Sampai Rp 5.500.000 --</option>
+                <option value="12"<?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '12') ? 'selected' : '' ?>>-- Rp 5.500.001 Sampai Rp 6.000.000 --</option>
+                <option value="13"<?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '13') ? 'selected' : '' ?>>-- Rp 6.000.001 Sampai Rp 6.500.000 --</option>
+                <option value="14"<?= (isset($_POST['gaji_ibu']) && $_POST['gaji_ibu'] == '14') ? 'selected' : '' ?>>-- Rp 6.500.001 Sampai Rp 7.000.000 --</option>
             </select>
         </div>        
-        <div>
-            <span class="wajib">( * ) Wajib diisi</span>
-        </div>
+
         <div class="form-actions">
             <button type="submit">Kirim Pendaftaran</button>
         </div>
